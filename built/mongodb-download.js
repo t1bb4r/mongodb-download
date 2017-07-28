@@ -8,11 +8,11 @@ var Debug = require('debug');
 var getos = require('getos');
 var url = require('url');
 var decompress = require('decompress');
-var request = require('request-promise');
+var request = require('request-promise-native');
 var md5File = require('md5-file');
 var DOWNLOAD_URI = "https://downloads.mongodb.org";
 var MONGODB_VERSION = "latest";
-var MongoDBDownload = (function () {
+var MongoDBDownload = /** @class */ (function () {
     function MongoDBDownload(_a) {
         var _b = _a.platform, platform = _b === void 0 ? os.platform() : _b, _c = _a.arch, arch = _c === void 0 ? os.arch() : _c, _d = _a.downloadDir, downloadDir = _d === void 0 ? os.tmpdir() : _d, _e = _a.version, version = _e === void 0 ? MONGODB_VERSION : _e, _f = _a.http, http = _f === void 0 ? {} : _f;
         this.options = {
@@ -406,7 +406,7 @@ var MongoDBDownload = (function () {
     return MongoDBDownload;
 }());
 exports.MongoDBDownload = MongoDBDownload;
-var MongoDBPlatform = (function () {
+var MongoDBPlatform = /** @class */ (function () {
     function MongoDBPlatform(platform, arch) {
         this.debug = Debug('mongodb-download-MongoDBPlatform');
         this.platform = this.translatePlatform(platform);
@@ -572,7 +572,7 @@ var MongoDBPlatform = (function () {
                 return "win32";
             case "linux":
                 return "linux";
-            case "elementary OS"://os.platform() doesn't return linux for elementary OS.
+            case "elementary OS": //os.platform() doesn't return linux for elementary OS.
                 return "linux";
             case "sunos":
                 return "sunos5";

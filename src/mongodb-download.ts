@@ -6,7 +6,7 @@ const Debug: any = require('debug');
 const getos: any = require('getos');
 const url: any = require('url');
 const decompress: any = require('decompress');
-const request: any = require('request-promise');
+const request: any = require('request-promise-native');
 const md5File: any = require('md5-file');
 
 const DOWNLOAD_URI: string = "https://downloads.mongodb.org";
